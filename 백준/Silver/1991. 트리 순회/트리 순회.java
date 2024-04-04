@@ -10,10 +10,8 @@ class Node {
 
     public Node(String node, String left, String right) {
         this.node = node;
-        if (Objects.equals(left, ".")) this.left = null;
-        else this.left = left;
-        if (Objects.equals(right, ".")) this.right = null;
-        else this.right = right;
+        this.left = left;
+        this.right = right;
     }
 }
 
@@ -62,29 +60,29 @@ public class Main {
         sb.append(node);
         tree.get(node).visited = true;
 
-        if (tree.get(node).left != null && !tree.get(tree.get(node).left).visited) {
+        if (!Objects.equals(tree.get(node).left, ".") && !tree.get(tree.get(node).left).visited) {
             preorder(tree.get(node).left);
         }
-        if (tree.get(node).right != null && !tree.get(tree.get(node).right).visited) {
+        if (!Objects.equals(tree.get(node).right, ".") && !tree.get(tree.get(node).right).visited) {
             preorder(tree.get(node).right);
         }
     }
 
     public static void inorder(String node) {
-        if (tree.get(node).left != null) {
+        if (!Objects.equals(tree.get(node).left, ".")) {
             inorder(tree.get(node).left);
         }
         sb.append(node);
-        if (tree.get(node).right != null) {
+        if (!Objects.equals(tree.get(node).right, ".")) {
             inorder(tree.get(node).right);
         }
     }
 
     public static void postorder(String node) {
-        if (tree.get(node).left != null) {
+        if (!Objects.equals(tree.get(node).left, ".")) {
             postorder(tree.get(node).left);
         }
-        if (tree.get(node).right != null) {
+        if (!Objects.equals(tree.get(node).right, ".")) {
             postorder(tree.get(node).right);
         }
         sb.append(node);
