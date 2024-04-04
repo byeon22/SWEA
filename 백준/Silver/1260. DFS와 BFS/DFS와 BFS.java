@@ -46,16 +46,10 @@ public class Main {
         visited[start] = true;
         sb.append(start).append(" ");
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>(nodes.get(start));
+        PriorityQueue<Integer> pq = new PriorityQueue<>(nodes.get(start)); // node 번호에 해당하는 PQ 가져와서 복사
 
         while (!pq.isEmpty()) {
             int node = pq.poll();
-            if (!visited[node]) {
-                dfs(node);
-            }
-        }
-
-        for (int node : nodes.get(start)) {
             if (!visited[node]) {
                 dfs(node);
             }
