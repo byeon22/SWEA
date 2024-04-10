@@ -23,9 +23,11 @@ public class Main {
         while (start <= N && end <= N) {
             if (sum >= S && min > end - start) min = end - start;
             if (sum < S) {
-                sum += list[end++];
+                sum += list[end];
+                end++;
             } else {
-                sum -= list[start++];
+                sum -= list[start];
+                start++;
             }
         }
 
