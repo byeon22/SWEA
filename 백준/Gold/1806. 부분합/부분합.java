@@ -1,30 +1,35 @@
+import java.io.*;
 import java.util.*;
- 
+
 public class Main {
-    
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        
-        int n = scan.nextInt();
-        int s = scan.nextInt();
-        
-        int[] nums = new int[n + 1];
-        for(int i = 0; i < n; i++) {
-            nums[i] = scan.nextInt();
-        }
-        
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int S = Integer.parseInt(st.nextToken());
         int min = Integer.MAX_VALUE;
         int start = 0;
         int end = 0;
-        int total = 0;
-        while(start <= n && end <= n) {
-            if(total >= s && min > end - start) min = end - start;
-            
-            if(total < s) total += nums[end++];
-            else total -= nums[start++];
+        int sum = 0;
+
+        int[] list = new int[N+1];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            list[i] = Integer.parseInt(st.nextToken());
         }
-        
-        if(min == Integer.MAX_VALUE) System.out.println("0");
+
+        while (start <= N && end <= N) {
+            if (sum >= S && min > end - start) min = end - start;
+            if (sum < S) {
+                sum += list[end++];
+            } else {
+                sum -= list[start++];
+            }
+        }
+
+        if (min == Integer.MAX_VALUE) System.out.println("0");
         else System.out.println(min);
     }
-}    
+}
