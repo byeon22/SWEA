@@ -18,25 +18,18 @@ public class Main {
         Arrays.sort(list);
 
         int start = 0;
-        int end = start + 1;
-        int sum = list[start];
+        int end = N-1;
+        int sum;
         int count = 0;
 
-        while (start < N-1 && end < N) {
-            sum += list[end];
-            if (sum < M || end <= start) {
-                sum -= list[end];
-                end++;
-                if (end >= N) {
-                    start++;
-                    sum = list[start];
-                    end = start+1;
-                }
-            } else {
-                if (sum == M) count++;
+        while (start < end) {
+            sum = list[start] + list[end];
+            if (sum < M) start++;
+            else if (sum > M) end--;
+            else {
+                count++;
                 start++;
-                sum = list[start];
-                end = start+1;
+                end--;
             }
         }
 
