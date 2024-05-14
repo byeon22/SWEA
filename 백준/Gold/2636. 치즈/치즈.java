@@ -28,7 +28,7 @@ public class Main {
         }
 
         while (cnt > 0) { // 모두 녹기 한 시간 전에 남아있는 치즈조각이 놓여 있는 칸의 개수를 구해야 함
-            cheese = cnt;
+            cheese = cnt; // 마지막 한 시간에 bfs를 돌 때, cnt가 음수가 되므로 cheese를 따로 고정해 둬야 함
             time++;
             visited = new boolean[N][M]; // visited 배열 초기화
             bfs(0, 0);
