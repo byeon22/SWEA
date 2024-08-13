@@ -1,4 +1,4 @@
-// replaceAll()
+// replaceAll() 사용
 
 import java.util.Scanner;
 
